@@ -3,9 +3,19 @@ package main
 import "github.com/kataras/iris"
 import "github.com/kataras/iris/mvc"
 // import "strconv"
+// import "fmt"
+import "user"
 
 
 func main() {
+    user.Test()
+    
+    u := user.NewUser("1")
+    u.Login()
+
+    // u := user{uid: "11111"}  
+    // fmt.Println(u.Login())
+
     app := iris.New()
 
     // 从 "./views" 目录加载HTML模板
@@ -60,4 +70,6 @@ func (m *MyController) BeforeActivation(b mvc.BeforeActivation) {
 }
 
 // GET: http://localhost:8080/chat
-func (m *MyController) Get() string { return "Hey!" }
+func (m *MyController) Get() string { 
+    return "Hey!" 
+}
