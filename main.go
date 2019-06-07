@@ -8,13 +8,12 @@ import "user"
 
 
 func main() {
-    user.Test()
+    u := user.NewUser("go!")
+    u.Test()
     
-    u := user.NewUser("1")
-    u.Login()
-
-    // u := user{uid: "11111"}  
-    // fmt.Println(u.Login())
+    // user.Login()
+    user.Register("q90016200")
+    
 
     app := iris.New()
 
