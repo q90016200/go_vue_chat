@@ -46,6 +46,26 @@ func main() {
         
     })
 
+    // 登入
+    app.Get("/login", func(ctx iris.Context){
+        // ctx.ViewData("message", "Hello world!")
+        ctx.View("login.html")
+    })
+    app.Post("/login", func(ctx iris.Context){
+
+    })
+
+    // 註冊
+    app.Get("/register", func(ctx iris.Context){
+        // ctx.ViewData("message", "Hello world!")
+        ctx.View("register.html")
+    })
+    app.Post("/register", func(ctx iris.Context){
+
+    })
+
+
+
     app.Run(iris.Addr(":8080"))
 }
 

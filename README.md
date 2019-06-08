@@ -12,7 +12,18 @@ export GOPATH=/home/vhost/go_vue_chat
 go get -u github.com/kataras/iriss
 ```
 
+# 安裝 mongodriver
+```
+go get go.mongodb.org/mongo-driver
+```
+
+# 更改 /etc/hosts
+```
+127.0.0.1 chat.go
+```
+
 # start
 ```
 go run main.go
 ```
+http://chat.go/

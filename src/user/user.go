@@ -56,8 +56,13 @@ func connectionMongo () (*mongo.Collection){
 }
 
 // 登入
-func Login() {  
-    // collection := connectionMongo()
+func Login(username string) {  
+    collection := connectionMongo()
+    userExists := checkUserExists(username)
+
+    if userExists == true {
+        
+    }
 
     // fmt.Println(mongo)
 }
@@ -85,6 +90,10 @@ func Register(username string) {
     } else {
         fmt.Println("User Exists")
     }
+
+}
+
+func Logout(username string) {
 
 }
 
