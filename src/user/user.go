@@ -8,6 +8,14 @@ import (
     "go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/mongo"
     "go.mongodb.org/mongo-driver/mongo/options"
+
+    "github.com/kataras/iris"
+    "github.com/kataras/iris/sessions"
+)
+
+var (
+    cookieNameForSessionID = "goChatSessionUser"
+    sess                   = sessions.New(sessions.Config{Cookie: cookieNameForSessionID, AllowReclaim: true})
 )
 
 
@@ -20,11 +28,10 @@ type TestStruct struct {
     id string
 }
 
-
 // 用來建構 User 的假建構子
 func NewUser(id string) (ts *TestStruct) {  
     ts = &TestStruct{id: id}
-    // 這裡會回傳一個型態是 *User 建構體的 user 變數
+    // 這裡會回傳一個型態是 *TestStruct 建構體的 ts 變數
     return
 }
 
@@ -56,15 +63,36 @@ func connectionMongo () (*mongo.Collection){
 }
 
 // 登入
-func Login(username string) {  
-    collection := connectionMongo()
-    userExists := checkUserExists(username)
+func Login(ctx iris.Context) (map[string]interface{}){
+    resultData := make(map[string]interface{})
+    resultData["error"] = false
 
-    if userExists == true {
-        
+    params := ctx.FormValues()
+
+    username, usernameExists := params["username"]
+
+    fmt.Println(params)
+
+    if usernameExists == false {
+        resultData["error"] = true
+        return resultData
+    } 
+
+    fmt.Println(username[0])
+    // fmt.Println(ctx.FormValue("username"))
+
+    // collection := connectionMongo()
+    userExists := checkUserExists(username[0])
+
+    fmt.Println("test")
+
+    if userExists == false {
+        resultData["error"] = true
+        return resultData
     }
 
-    // fmt.Println(mongo)
+    return resultData;
+
 }
 
 // 註冊
@@ -97,6 +125,10 @@ func Logout(username string) {
 
 }
 
+func userResponse() {
+
+}
+
 // 檢查 user 是否存在
 func checkUserExists(username string) (bool) {
     collection := connectionMongo()
@@ -107,13 +139,12 @@ func checkUserExists(username string) (bool) {
 
     err := collection.FindOne(context.TODO(), filter).Decode(&result)
 
-    fmt.Println(result)
+    // fmt.Println(result)
 
     if err != nil {
         // log.Fatal(err)
         return false
     }
-
     
     return true
     

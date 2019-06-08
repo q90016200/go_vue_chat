@@ -10,10 +10,6 @@ import "user"
 func main() {
     u := user.NewUser("go!")
     u.Test()
-    
-    // user.Login()
-    user.Register("q90016200")
-    
 
     app := iris.New()
 
@@ -52,7 +48,7 @@ func main() {
         ctx.View("login.html")
     })
     app.Post("/login", func(ctx iris.Context){
-
+        ctx.JSON(user.Login(ctx))
     })
 
     // 註冊
@@ -60,10 +56,7 @@ func main() {
         // ctx.ViewData("message", "Hello world!")
         ctx.View("register.html")
     })
-    app.Post("/register", func(ctx iris.Context){
-
-    })
-
+    // app.Post("/register", user.Register)
 
 
     app.Run(iris.Addr(":8080"))
