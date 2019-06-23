@@ -1,0 +1,26 @@
+{
+  "name": "go_vue_chat",
+  "version": "1.0.0",
+  "description": "``` go env ``` # 以將 GOPATH 設定為 $HOME/go_vue_chat 為例 ``` export GOPATH=/home/vhost/go_vue_chat ```",
+  "main": "index.js",
+  "dependencies": {
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.4"
+  },
+  "scripts": {
+    "build": "node_modules/.bin/webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/q90016200/go_vue_chat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/q90016200/go_vue_chat/issues"
+  },
+  "homepage": "https://github.com/q90016200/go_vue_chat#readme"
+}

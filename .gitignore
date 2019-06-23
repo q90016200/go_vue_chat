@@ -1,2 +1,6 @@
 .DS_Store
 pkg/linux_amd64/github.com/kataras/iris.a
+node_modules
+npm-debug.log
+v8-compile-cache-0
+public
