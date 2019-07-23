@@ -11,7 +11,9 @@
     "webpack-cli": "^3.3.4"
   },
   "scripts": {
-    "build": "node_modules/.bin/webpack --config webpack.config.js"
+    "watch": "node_modules/.bin/webpack --mode development --watch",
+    "build": "node_modules/.bin/webpack",
+    "deploy": "node_modules/.bin/webpack --mode production",
   },
   "repository": {
     "type": "git",

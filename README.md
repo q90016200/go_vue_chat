@@ -9,7 +9,7 @@ export GOPATH=/home/vhost/go_vue_chat
 
 # 安裝 go iris
 ```
-go get -u github.com/kataras/iriss
+go get -u github.com/kataras/iris
 ```
 
 # 安裝 mongodriver
