@@ -14,7 +14,12 @@ go get -u github.com/kataras/iris
 
 # 安裝 mongodriver
 ```
-go get go.mongodb.org/mongo-driver
+go get -u go.mongodb.org/mongo-driver
+```
+
+# 安裝 Go-MySQL-Driver
+```
+go get -u github.com/go-sql-driver/mysql
 ```
 
 # 更改 /etc/hosts
